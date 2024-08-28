@@ -1,0 +1,129 @@
+.hidden {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease-out;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    position: relative;
+    text-align: center;
+}
+
+.ruleta {
+    width: 450px;
+    height: 450px;
+    border-radius: 50%;
+    position: relative;
+    transform: rotate(0deg);
+    transition: transform 4s ease-out;
+}
+
+.indicador {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 30px solid black;
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.pendulo {
+    animation: pendulo 0.8s infinite; /* Aplica la animación de péndulo */
+}
+
+.sector{
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    border-top-left-radius: 100%;
+    transform-origin: 100% 100%;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+}
+
+.sector .texto {
+    position: relative;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    top: 50%;
+    left: 5%;
+    text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5);
+    font-size: 24px; /* Ajusta el tamaño del texto */
+}
+
+.rojo {
+    background-color: red;
+    transform: rotate(45deg);
+}
+
+.verde {
+    background-color: green;
+    transform: rotate(135deg);
+}
+
+.azul {
+    background-color: blue;
+    transform: rotate(225deg);
+}
+
+.amarillo {
+    background-color: yellow;
+    transform: rotate(315deg);
+}
+
+button {
+    margin-top: 30px;
+    padding: 10px 20px;
+    font-size: 16px;
+    position: absolute;
+    left: 42.5%;
+    cursor: pointer;
+}
+
+.tema {
+    font-size: 36px;
+    font-weight: bold;
+    opacity: 0;
+    position: relative;
+    animation: aparecer 2s ease-out forwards;
+}
+
+.resultado {
+    font-size: 24px;
+    font-weight: bold;
+    top: 100px;
+    opacity: 0;
+    position: relative;
+    animation: aparecer 2s ease-out forwards;
+}
+
+@keyframes aparecer {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes pendulo {
+    0%, 100% {
+        transform: translateX(-50%) rotate(-15deg); /* Comienza en el extremo izquierdo */
+    }
+    50% {
+        transform: translateX(-50%) rotate(15deg); /* Se mueve al extremo derecho */
+    }
+}
